@@ -1,0 +1,13 @@
+language: java
+before_install:
+- chmod +x gradlew
+jobs:
+  include:
+  - stage: "Initial Assemble"
+    language: java
+    script:
+    - ./gradlew assemble
+  - stage: "Tests"
+    language: java
+    script:
+    - ./gradlew test
