@@ -1,4 +1,4 @@
-package point2d.client;
+package misc;
 
 import edu.princeton.cs.algs4.Point2D;
 

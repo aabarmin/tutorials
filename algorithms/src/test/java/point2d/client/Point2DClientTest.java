@@ -1,6 +1,7 @@
 package point2d.client;
 
 import edu.princeton.cs.algs4.Point2D;
+import misc.Point2DClient;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
