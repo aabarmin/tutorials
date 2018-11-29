@@ -1,5 +1,9 @@
 package sort.selection;
 
+/**
+ * Selection Sort.
+ * N^2 / 2 complexity
+ */
 public class SelectionSort {
     public int[] sort(int[] source) {
         for (int i = 0; i < source.length - 1; i++) {
