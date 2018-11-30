@@ -1,4 +1,4 @@
-package di;
+package ru.mydesignstudio.di;
 
 /**
  * @TODO write a discription

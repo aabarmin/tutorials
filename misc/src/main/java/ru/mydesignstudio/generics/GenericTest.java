@@ -1,6 +1,6 @@
-package generics;
+package ru.mydesignstudio.generics;
 
-public class GenericExtendTest<T extends Number> {
+public class GenericTest<T> {
     private T value;
 
     public T getValue() {

@@ -1,4 +1,4 @@
-package di;
+package ru.mydesignstudio.di;
 
 import javax.enterprise.inject.Default;
 

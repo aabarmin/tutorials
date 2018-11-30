@@ -1,4 +1,4 @@
-package generics;
+package ru.mydesignstudio.generics;
 
 import org.junit.jupiter.api.Test;
 
