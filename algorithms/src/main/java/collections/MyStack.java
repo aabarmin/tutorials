@@ -4,15 +4,21 @@ public class MyStack<T> {
     private Node first;
     private Node last;
 
+    /**
+     * Add item as a last one.
+     *
+     * @param item
+     */
     public void push(T item) {
-        Node<T> l = this.last;
-        Node<T> newNode = new Node(item, this.last, null);
-        if (l == null) {
-            this.first = newNode;
-            this.last = newNode;
+        if (this.last == null) {
+            // list is empty, new node is a first and last at the same moment
+            final Node<T> node = new Node<>(item, null, null);
+            this.first = node;
+            this.last = node;
         } else {
-            this.last.next = newNode;
-            this.last = newNode;
+            // add a node as a last one
+            final Node<T> node = new Node<>(item, this.last, null);
+            this.last = node;
         }
     }
 
@@ -24,13 +30,23 @@ public class MyStack<T> {
         if (this.last == null) {
             return null;
         }
-        Node theLast = this.last;
-        Node thePrev = theLast.prev;
-        if (thePrev != null) {
-            thePrev.next = null;
+        // last element will be returned
+        final Node<T> toReturn = this.last;
+        // need to rearrange elements, previous will be last one now
+        if (this.last.prev != null) {
+            // this is not a last node
+            final Node<T> newLast = this.last.prev;
+            newLast.next = null;
+            this.last = newLast;
+        } else {
+            // this was the last node in a list
+            this.last = null;
+            this.first = null;
         }
-        this.last = thePrev;
-        return (T) theLast.value;
+        // GC help, actually no need to do it now
+        toReturn.next = null;
+        toReturn.prev = null;
+        return toReturn.value;
     }
 
     public boolean isEmpty() {

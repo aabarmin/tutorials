@@ -1,8 +1,9 @@
 package collections;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class MyStackTest {
     @Test
@@ -22,6 +23,18 @@ class MyStackTest {
     void shouldBeEmptyAfterAddAndRemoveOfTheElement() {
         final MyStack<Integer> stack = new MyStack<>();
         stack.push(10);
+        stack.pop();
+        assertTrue(stack.isEmpty());
+    }
+
+    @Test
+    void shouldBeEmptyAfterTwoElementsAddedAndRemoved() {
+        final MyStack<Integer> stack = new MyStack<>();
+        stack.push(10);
+        stack.push(20);
+        assertFalse(stack.isEmpty());
+        stack.pop();
+        assertFalse(stack.isEmpty());
         stack.pop();
         assertTrue(stack.isEmpty());
     }
