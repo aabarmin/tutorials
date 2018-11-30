@@ -1,10 +1,11 @@
-package generics;
+package ru.mydesignstudio.generics;
 
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Type;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GenericExtendTestTest {
     @Test

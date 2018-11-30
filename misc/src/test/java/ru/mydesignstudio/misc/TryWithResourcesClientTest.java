@@ -1,7 +1,8 @@
-package misc;
+package ru.mydesignstudio.misc;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import ru.mydesignstudio.twr.TryWithResourcesClient;
 import org.junit.jupiter.api.Test;
 
 class TryWithResourcesClientTest {

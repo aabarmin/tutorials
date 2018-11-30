@@ -1,4 +1,4 @@
-package misc;
+package ru.mydesignstudio.twr;
 
 public class TryWithResourcesClient implements AutoCloseable {
     @Override

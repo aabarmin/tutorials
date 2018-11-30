@@ -1,4 +1,4 @@
-package di;
+package ru.mydesignstudio.di;
 
 import javax.inject.Qualifier;
 import java.lang.annotation.Retention;
