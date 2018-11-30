@@ -1,8 +1,9 @@
-package sort.selection;
+package sort;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
+import sort.InsertionSort;
 
 class InsertionSortTest {
     final InsertionSort sort = new InsertionSort();

@@ -1,4 +1,4 @@
-package sort.selection;
+package sort;
 
 public class InsertionSort {
     private static boolean isLess(int a, int b) {
