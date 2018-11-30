@@ -1,4 +1,4 @@
-package sort.selection;
+package sort;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package sort.selection;
+package sort;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import sort.SelectionSort;
 import sort.utils.SortUtils;
 
 class SelectionSortTest {
