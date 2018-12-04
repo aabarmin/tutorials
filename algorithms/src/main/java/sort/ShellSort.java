@@ -1,5 +1,8 @@
 package sort;
 
+import static sort.utils.SortUtils.exchange;
+import static sort.utils.SortUtils.isLess;
+
 public class ShellSort {
     public int[] sort(int[] source) {
         int n = source.length;
@@ -18,15 +21,5 @@ public class ShellSort {
         }
 
         return source;
-    }
-
-    private static boolean isLess(int a, int b) {
-        return a < b;
-    }
-
-    private static void exchange(int[] source, int from, int to) {
-        int buffer = source[from];
-        source[from] = source[to];
-        source[to] = buffer;
     }
 }
