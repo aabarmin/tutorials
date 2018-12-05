@@ -9,6 +9,22 @@ import java.util.List;
 import java.util.Map;
 
 public class SortUtils {
+    public static boolean isLess(Comparable left, Comparable right) {
+        return left.compareTo(right) < 0;
+    }
+
+    public static void exchange(Comparable[] arr, int left, int right) {
+        Comparable buffer = arr[left];
+        arr[left] = arr[right];
+        arr[right] = buffer;
+    }
+
+    public static void exchange(int[] arr, int left, int right) {
+        int buffer = arr[left];
+        arr[left] = arr[right];
+        arr[right] = buffer;
+    }
+
     public static <T> List<T> wrapCollection(List<T> source) {
         final Object proxyInstance = Proxy.newProxyInstance(
                 SortUtils.class.getClassLoader(),
