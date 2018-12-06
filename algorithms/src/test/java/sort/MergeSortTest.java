@@ -9,6 +9,6 @@ class MergeSortTest {
 
     @Test
     void oneMoreTest() {
-        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, sort.sort(new int[]{5, 2, 1, 3, 4}));
+        assertArrayEquals(new int[]{0, 1, 2, 3, 4}, sort.sort(new int[]{0, 4, 2, 3, 1}));
     }
 }
