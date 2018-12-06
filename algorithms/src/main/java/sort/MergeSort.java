@@ -15,12 +15,19 @@ public class MergeSort {
         // from lo to hi positions (inclusive)
         // k iterates over all the space form lo to hi, it's an index in a destination array
         for (int k = lo; k <= hi; k++) {
+            // left marker has gone to the second part of array that we are merging now
+            // let's take items from the right side
             if (i > mid) {
                 source[k] = aux[j];
                 j++;
+
+            // right marker has gone out of right part of array, let's take from the left part
             } else if (j > hi) {
                 source[k] = aux[i];
                 i++;
+
+            // these two branches are used when we need to sort small 2-items collections
+            // in most cases these branches aren't used
             } else if (isLess(aux[j], aux[i])) {
                 // comparing i-th and j-th elements, taking the least of them
                 source[k] = aux[j];
