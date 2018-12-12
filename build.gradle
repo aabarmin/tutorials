@@ -5,11 +5,25 @@ task wrapper(type: Wrapper) {
     gradleVersion = '4.8'
 }
 
-jacocoTestReport {
+repositories {
+    mavenCentral()
+}
+
+task codeCoverageReport(type: JacocoReport) {
+    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
+
+    subprojects.each {
+        sourceSets it.sourceSets.main
+    }
+
     reports {
         xml.enabled true
+        xml.destination new File("${buildDir}/reports/jacoco/report.xml")
         html.enabled false
+        csv.enabled false
     }
 }
 
-check.dependsOn jacocoTestReport
+codeCoverageReport.dependsOn {
+    subprojects*.test
+}
