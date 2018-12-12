@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/aabarmin/self-study.svg?branch=master)](https://travis-ci.org/aabarmin/self-study)
+[![codebeat badge](https://codebeat.co/badges/f0784dfc-4490-4024-88c0-bda25ba0b2f5)](https://codebeat.co/projects/github-com-aabarmin-self-study-master)
+
 # Self Study #
 I'd like to collect a few examples of code that illustrate something interesting
 
