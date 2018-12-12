@@ -8,6 +8,10 @@ I'd like to collect a few examples of code that illustrate something interesting
 * Shell Sort: O(N ^ 3 / 2)
 * Merge Sort: O(N log N)
 
+## Collections 
+
+* Heap-based priority queue: 1 * lg N to insert and 2 * lg N for remove the maximum
+
 ## Gradle Cargo Plugin for local deployment
 
 First, you need to build your application using `war` plugin and `war` task. 
