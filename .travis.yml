@@ -10,4 +10,7 @@ jobs:
   - stage: "Tests"
     language: java
     script:
-    - ./gradlew test
+    - ./gradlew check
+    - ./gradlew jacocoTestReport
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

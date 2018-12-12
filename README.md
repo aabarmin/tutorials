@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/aabarmin/self-study.svg?branch=master)](https://travis-ci.org/aabarmin/self-study)
+[![codebeat badge](https://codebeat.co/badges/f0784dfc-4490-4024-88c0-bda25ba0b2f5)](https://codebeat.co/projects/github-com-aabarmin-self-study-master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/41112210aa66e81790ee/maintainability)](https://codeclimate.com/github/aabarmin/self-study/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/41112210aa66e81790ee/test_coverage)](https://codeclimate.com/github/aabarmin/self-study/test_coverage)
+
 # Self Study #
 I'd like to collect a few examples of code that illustrate something interesting
 
