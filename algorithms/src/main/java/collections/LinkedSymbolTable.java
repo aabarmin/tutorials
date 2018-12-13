@@ -14,22 +14,23 @@ public class LinkedSymbolTable<K, V> implements SymbolTable<K, V> {
     public void put(K k, V v) {
         Node<K, V> current = first;
         if (current == null) {
-            this.first = new Node<>(null, k, v, null);
+            this.first = new Node<>(null, k, v);
             this.last = this.first;
-        } else {
-            while (current != null) {
-                if (current.key.equals(k)) {
-                    // change the value
-                    current.value = v;
-                    break;
-                }
-                current = current.next;
-            }
-            // add as last
-            Node newNode = new Node<>(this.last, k, v, null);
-            this.last.next = newNode;
-            this.last = newNode;
+            // it's a first node in a table
+            return;
         }
+        while (current != null) {
+            if (current.key.equals(k)) {
+                // change the value
+                current.value = v;
+                break;
+            }
+            current = current.next;
+        }
+        // add as last
+        Node newNode = new Node<>(this.last, k, v);
+        this.last.next = newNode;
+        this.last = newNode;
     }
 
     @Override
@@ -94,11 +95,10 @@ public class LinkedSymbolTable<K, V> implements SymbolTable<K, V> {
         private V value;
         private Node<K, V> next;
 
-        public Node(Node<K, V> prev, K key, V value, Node<K, V> next) {
+        public Node(Node<K, V> prev, K key, V value) {
             this.prev = prev;
             this.key = key;
             this.value = value;
-            this.next = next;
         }
     }
 }
