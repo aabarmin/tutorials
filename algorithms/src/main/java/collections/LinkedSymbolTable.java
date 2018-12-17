@@ -47,7 +47,35 @@ public class LinkedSymbolTable<K, V> implements SymbolTable<K, V> {
 
     @Override
     public void delete(K k) {
-
+        Node<K, V> current = this.first;
+        while (current != null) {
+            if (current.key.equals(k)) {
+                if (current == first) {
+                    // it's a first node
+                    Node<K, V> next = current.next;
+                    first = next;
+                    if (next != null) {
+                        next.prev = first;
+                    }
+                } else if (current.next == null) {
+                    // it's a last node
+                    Node<K, V> prev = current.prev;
+                    if (prev != null) {
+                        // remove the last node
+                        prev.next = null;
+                    }
+                    last = prev;
+                } else {
+                    // node in the middle
+                    Node<K, V> prev = current.prev;
+                    Node<K, V> next = current.next;
+                    prev.next = next;
+                    next.prev = prev;
+                }
+                break;
+            }
+            current = current.next;
+        }
     }
 
     @Override
@@ -90,7 +118,7 @@ public class LinkedSymbolTable<K, V> implements SymbolTable<K, V> {
     }
 
     private class Node<K, V> {
-        private final Node<K, V> prev;
+        private Node<K, V> prev;
         private final K key;
         private V value;
         private Node<K, V> next;
