@@ -25,7 +25,8 @@ class SymbolTableTest {
     static Stream<SymbolTable<Integer, String>> instances() {
         return Stream.of(
                 new LinkedSymbolTable<>(),
-                new BinaryTreeSymbolTable<>()
+                new BinaryTreeSymbolTable<>(),
+                new RedBlackTreeSymbolTable<>()
         );
     }
 

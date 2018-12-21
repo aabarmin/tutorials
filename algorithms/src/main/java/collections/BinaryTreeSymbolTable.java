@@ -182,6 +182,7 @@ public class BinaryTreeSymbolTable<K extends Comparable<K>, V> implements Ordere
         root = deleteMin(root);
     }
 
+    @SuppressWarnings("Duplicates")
     private Node<K, V> deleteMin(Node<K, V> current) {
         if (current.left == null) {
             return current.right;
@@ -228,6 +229,7 @@ public class BinaryTreeSymbolTable<K extends Comparable<K>, V> implements Ordere
         return keys;
     }
 
+    @SuppressWarnings("Duplicates")
     private void keys(Node<K, V> current, List<K> keys, K lo, K hi) {
         if (current == null) {
             return;
