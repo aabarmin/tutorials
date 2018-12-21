@@ -145,9 +145,28 @@ public class BinaryTreeSymbolTable<K extends Comparable<K>, V> implements Ordere
         return null;
     }
 
+    /**
+     * Number of nodes with a key less than the provided.
+     * @param key
+     * @return
+     */
     @Override
     public int rank(K key) {
-        return 0;
+        return rank(root, key);
+    }
+
+    private int rank(Node<K, V> current, K key) {
+        if (current == null) {
+            return 0;
+        }
+        final int compare = key.compareTo(current.key);
+        if (compare < 0) {
+            return rank(current.left, key);
+        } else if (compare > 0) {
+            return 1 + size(current.left) + rank(current.right, key);
+        } else {
+            return size(current.left);
+        }
     }
 
     @Override
@@ -191,7 +210,15 @@ public class BinaryTreeSymbolTable<K extends Comparable<K>, V> implements Ordere
 
     @Override
     public int size(K lo, K hi) {
-        return 0;
+        if (lo.compareTo(hi) > 0) {
+            // lo is more than hi
+            return 0;
+        }
+        if (contains(hi)) {
+            return rank(hi) - rank(lo) + 1;
+        } else {
+            return rank(hi) - rank(lo);
+        }
     }
 
     @Override
