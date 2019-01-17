@@ -1,4 +1,4 @@
-package hibernate.script;
+package ru.mydesignstudio.hibernate.script;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import hibernate.collection.script.Script;
-import hibernate.collection.script.ScriptCommand;
-import hibernate.configuration.HibernateConfiguration;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -22,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
+import ru.mydesignstudio.hibernate.configuration.HibernateConfiguration;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {
@@ -86,7 +84,7 @@ public class ScriptTest {
                     () -> assertEquals(script.getCommands().size(), 5),
                     () -> assertArrayEquals(
                             script.getCommands().stream()
-                                    .mapToInt((ScriptCommand c) -> c.getOrder())
+                                    .mapToInt(ScriptCommand::getOrder)
                                     .toArray(),
                             new int[]{1, 2, 3, 4, 5}
                     ),
