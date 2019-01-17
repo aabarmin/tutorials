@@ -1,4 +1,4 @@
-package hibernate.configuration;
+package ru.mydesignstudio.hibernate.configuration;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -11,6 +11,8 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import ru.mydesignstudio.hibernate.script.Script;
+import ru.mydesignstudio.hibernate.script.ScriptCommand;
 
 @Configuration
 @EnableTransactionManagement
@@ -19,7 +21,10 @@ public class HibernateConfiguration {
     public LocalSessionFactoryBean sessionFactory(DataSource dataSource) {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource);
-        sessionFactory.setPackagesToScan("hibernate");
+        sessionFactory.setAnnotatedClasses(
+                Script.class,
+                ScriptCommand.class
+        );
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }

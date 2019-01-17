@@ -1,4 +1,7 @@
-package hibernate.collection.script;
+package ru.mydesignstudio.hibernate.script;
+
+import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,10 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import lombok.Data;
-import lombok.SneakyThrows;
-import lombok.ToString;
-
 @Data
 @Entity
 @Table(
@@ -24,7 +23,7 @@ import lombok.ToString;
         })
 )
 @ToString(exclude = {"script"})
-public class ScriptCommand implements Cloneable {
+public class ScriptCommand {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "SCRIPT_COMMAND_ID")
@@ -39,9 +38,4 @@ public class ScriptCommand implements Cloneable {
 
     @Column(name = "COMMAND_TITLE")
     private String title;
-
-    @SneakyThrows
-    public ScriptCommand getClone() {
-        return (ScriptCommand) clone();
-    }
 }

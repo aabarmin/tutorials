@@ -1,4 +1,4 @@
-package hibernate.collection.script;
+package ru.mydesignstudio.hibernate.script;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
