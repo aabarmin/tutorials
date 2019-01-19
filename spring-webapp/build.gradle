@@ -6,6 +6,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
+        classpath 'com.bmuschko:gradle-docker-plugin:4.3.0'
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
@@ -13,12 +14,14 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'com.bmuschko.docker-remote-api'
 apply plugin: 'war'
 
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -34,4 +37,37 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+import com.bmuschko.gradle.docker.tasks.image.*
+
+task copyWar(type: Copy) {
+    dependsOn 'build'
+
+    from 'build/libs/spring-webapp.war'
+    into 'build/docker'
+}
+
+/**
+ * This task creates a Dockerfile that contains Tomcat and war of our application.
+ * Image is not published anywhere by default, it's necessary to publish it before run.
+ */
+task createDockerfile(type: Dockerfile) {
+    dependsOn 'copyWar'
+
+    from 'tomcat:8'
+    exposePort 8080
+    addFile('spring-webapp.war', '/usr/local/tomcat/webapps/app.war')
+    defaultCommand('catalina.sh', 'run')
+}
+
+task removeImage(type: DockerRemoveImage) {
+    targetImageId 'abarmin/webapp'
+}
+
+task buildImage(type: DockerBuildImage) {
+    //dependsOn 'removeImage'
+    dependsOn 'createDockerfile'
+
+    tags.add('abarmin/webapp:latest')
 }
