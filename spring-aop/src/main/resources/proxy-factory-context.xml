@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="personTarget"
+          class="ru.mydesignstudio.spring.aop.proxy.factory.PersonImpl">
+        <property name="firstName" value="First Name" />
+        <property name="lastName" value="Last Name" />
+    </bean>
+
+    <bean id="debugInterceptor"
+          class="ru.mydesignstudio.spring.aop.proxy.factory.DebugInterceptor" />
+
+    <bean id="person"
+          class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="personTarget" />
+        <property name="proxyInterfaces" value="ru.mydesignstudio.spring.aop.proxy.factory.Person" />
+        <property name="interceptorNames">
+            <list>
+                <value>debugInterceptor</value>
+            </list>
+        </property>
+    </bean>
+</beans>
