@@ -5,4 +5,5 @@ include 'tomcat-cargo'
 include 'spring-core'
 include 'spring-aop'
 include 'spring-test'
+include 'spring-data'
 
