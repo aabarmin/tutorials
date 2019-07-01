@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <import resource="classpath:data-source-config.xml" />
+
+    <bean id="peopleService"
+          class="ru.mydesignstudio.spring.data.service.impl.PeopleServiceImpl">
+        <constructor-arg>
+            <bean class="ru.mydesignstudio.spring.data.service.impl.dao.PeopleDaoImpl">
+                <constructor-arg ref="jdbcTemplate" />
+            </bean>
+        </constructor-arg>
+    </bean>
+
+    <bean id="peopleFacade"
+          class="ru.mydesignstudio.spring.data.service.PeopleFacade">
+        <constructor-arg ref="peopleService" />
+    </bean>
+
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="find*" read-only="true"/>
+            <tx:method name="*" no-rollback-for="ru.mydesignstudio.spring.data.service.MyCustomException" propagation="REQUIRED" />
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="peopleServiceOperations" expression="execution(* ru.mydesignstudio.spring.data.service.impl.PeopleServiceImpl.*(..))" />
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="peopleServiceOperations" />
+    </aop:config>
+
+    <aop:config>
+        <aop:pointcut id="peopleFacadeOperations" expression="execution(* ru.mydesignstudio.spring.data.service.PeopleFacade.*(..))" />
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="peopleFacadeOperations" />
+    </aop:config>
+</beans>
