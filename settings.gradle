@@ -6,4 +6,5 @@ include 'spring-core'
 include 'spring-aop'
 include 'spring-test'
 include 'spring-data'
+include 'spring-mvc'
 
