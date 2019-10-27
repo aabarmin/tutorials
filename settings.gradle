@@ -7,6 +7,6 @@ include 'spring-aop'
 include 'spring-test'
 include 'spring-data'
 include 'spring-mvc'
-include 'reactor'
 include 'spring-data-jpa'
-
+include 'reactor'
+include 'kotlin-samples'
