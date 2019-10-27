@@ -8,4 +8,5 @@ include 'spring-test'
 include 'spring-data'
 include 'spring-mvc'
 include 'reactor'
+include 'spring-data-jpa'
 
