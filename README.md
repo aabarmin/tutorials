@@ -34,3 +34,18 @@ following steps:
 
 1. Rebuild your application, for example, using `war` task
 2. Run the `cargoRedeployLocal` task to update deployed configuration
+
+# VIM for MacOS
+
+I'm trying to be a better software engineer but I've found that in many cases
+`vim` doesn't want to work on MacOS properly. A few tips I've found. 
+
+**Enabling syntax highlight**
+
+First, check if `.vimrc` file is created. If not - this file should be created
+and the following content should be added:
+
+```java
+syntax enable
+set background=dark
+```
