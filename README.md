@@ -69,4 +69,13 @@ set laststatus=2
 ## GitFlow extension
 
 [Git Flow](https://github.com/nvie/gitflow) extension looks quite useful, try
-to use it locally for development. 
+to use it locally for development.
+
+## Useful `.bashrc` aliases
+
+Open the `.bashrc` file and add the following aliases I use to use:
+
+```
+alias l='ls -al'
+```
+ 
