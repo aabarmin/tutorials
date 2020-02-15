@@ -40,12 +40,33 @@ following steps:
 I'm trying to be a better software engineer but I've found that in many cases
 `vim` doesn't want to work on MacOS properly. A few tips I've found. 
 
-**Enabling syntax highlight**
+## Enabling syntax highlight
 
 First, check if `.vimrc` file is created. If not - this file should be created
 and the following content should be added:
 
-```java
+```
 syntax enable
 set background=dark
 ```
+
+## Installing plugin manager to install other plugins
+
+[Vundle](https://github.com/VundleVim/Vundle.vim) plugin manager works best on
+my MacOS. In order to install it follow the installation instructions. 
+
+## Installing the LightLine
+
+[LightLine](https://github.com/itchyny/lightline.vim) for VIM also works fine 
+on my MacOS. The following line should be added to `.vimrc`:
+
+```
+set laststatus=2
+```
+
+# Other useful ideas
+
+## GitFlow extension
+
+[Git Flow](https://github.com/nvie/gitflow) extension looks quite useful, try
+to use it locally for development. 
