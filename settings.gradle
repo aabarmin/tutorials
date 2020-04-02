@@ -1,13 +1,17 @@
-rootProject.name = 'self-study'
+rootProject.name = 'tutorials'
+
 include 'algorithms'
 include 'misc'
-include 'tomcat-cargo'
-include 'spring-core'
-include 'spring-aop'
-include 'spring-test'
-include 'spring-data'
-include 'spring-mvc'
-include 'spring-data-jpa'
-include 'reactor'
-include 'javalin-start'
-include 'kotlin-samples'
+
+include ':tomcat:tomcat-cargo'
+
+include ':spring:spring-core'
+include ':spring:spring-aop'
+include ':spring:spring-test'
+include ':spring:spring-data'
+include ':spring:spring-mvc'
+include ':spring:spring-data-jpa'
+
+include ':javalin:javalin-start'
+include ':kotlin:kotlin-samples'
+include ':reactive:reactor'
