@@ -1,13 +1,11 @@
 plugins {
     id 'java'
-    id 'net.ltgt.apt' version '0.10'
 }
 
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
-    jcenter()
 }
 
 dependencies {
@@ -17,6 +15,9 @@ dependencies {
     compile 'org.slf4j:slf4j-simple:1.7.26'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.10.0.pr1'
 
-    compileOnly 'org.projectlombok:lombok:1.18.4'
-    apt 'org.projectlombok:lombok:1.18.4'
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.12'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
 }
