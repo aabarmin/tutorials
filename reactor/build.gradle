@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id "io.spring.dependency-management" version "1.0.6.RELEASE"
+    id "io.spring.dependency-management" version "1.0.9.RELEASE"
 }
 
 dependencyManagement {
@@ -8,8 +8,6 @@ dependencyManagement {
         mavenBom "io.projectreactor:reactor-bom:Bismuth-RELEASE"
     }
 }
-
-sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
