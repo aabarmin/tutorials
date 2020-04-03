@@ -1,9 +1,25 @@
 plugins {
     `java-library`
+    `maven-publish`
 }
 
 repositories {
     jcenter()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("gradle-library") {
+            from(components["java"])
+        }
+    }
+
+    repositories {
+        maven {
+            name = "CustomLocalRepository"
+            url = uri("file://${buildDir}/repo")
+        }
+    }
 }
 
 dependencies {
