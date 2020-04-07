@@ -51,5 +51,14 @@ jobs:
         with:
           name: javalin-start
 
+      - name: Some debugging
+        shell: bash
+        run: |
+          ls -al
+          ls -al ./javalin
+          ls -al ./javalin/javalin-start
+          ls -al ./javalin/javalin-start/build
+          ls -al ./javalin/javalin-start/build/lib
+
       - name: Build a Docker Image
         run: docker build . --file ./javalin/javalin-start/Dockerfile --tag image
