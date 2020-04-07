@@ -22,7 +22,7 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Cache Gradle packages
+      - name: Restore Gradle caches
         uses: actions/cache@v1
         with:
           path: ~/.gradle/caches
@@ -51,11 +51,9 @@ jobs:
         with:
           name: javalin-artifact
 
-      - name: Place the artifact back to the libs folder
-        shell: bash
-        run: |
-          mkdir -p ./javalin/javalin-start/build/libs
-          mv ./javalin-artifact/*.jar ./javalin/javalin-start/build/libs
-
       - name: Build a Docker Image
-        run: docker build ./javalin/javalin-start/ --file ./javalin/javalin-start/Dockerfile --tag image
+        run: |
+          docker build \
+            --file ./javalin/javalin-start/Dockerfile \
+            --tag image \
+            ./javalin-artifact
