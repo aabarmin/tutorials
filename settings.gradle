@@ -18,3 +18,4 @@ include ':reactive:reactor'
 
 include ':gradle-examples:gradle-library'
 include ':gradle-examples:gradle-consumer'
+include ':gradle-examples:custom-configuration'

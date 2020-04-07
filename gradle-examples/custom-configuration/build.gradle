@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+configurations {
+    intTests {
+        extendsFrom testImplementation
+    }
+}
+
+sourceSets {
+    intTests {
+        java {
+            srcDirs = ["src/intTests/java"]
+        }
+        resources {
+            srcDirs = ["src/intTests/resources"]
+        }
+    }
+}
+
+dependencies {
+    intTests "junit:junit:4.12"
+}
