@@ -58,4 +58,4 @@ jobs:
           mv ./javalin-artifact/*.jar ./javalin/javalin-start/build/libs
 
       - name: Build a Docker Image
-        run: docker build . --file ./javalin/javalin-start/Dockerfile --tag image
+        run: docker build ./javalin/javalin-start/ --file ./javalin/javalin-start/Dockerfile --tag image
