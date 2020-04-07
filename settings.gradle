@@ -15,3 +15,7 @@ include ':spring:spring-data-jpa'
 include ':javalin:javalin-start'
 include ':kotlin:kotlin-samples'
 include ':reactive:reactor'
+
+include ':gradle-examples:gradle-library'
+include ':gradle-examples:gradle-consumer'
+include ':gradle-examples:custom-configuration'
