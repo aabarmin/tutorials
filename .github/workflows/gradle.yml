@@ -48,11 +48,14 @@ jobs:
         with:
           name: javalin-artifact
 
-      - name: Some debugging
+      - name: Checkout the code back, it contains the Dockerfile
+        uses: actions/checkout@v2
+
+      - name: Place the artifact back to the libs folder
         shell: bash
         run: |
-          ls -al
-          ls -al ./javalin-artifact/
+          mkdir -p ./javalin/javalin-start/build/libs
+          mv ./javalin-artifact/*.jar ./javalin/javalin-start/build/libs
 
       - name: Build a Docker Image
         run: docker build . --file ./javalin/javalin-start/Dockerfile --tag image
