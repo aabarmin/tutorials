@@ -21,3 +21,12 @@ jobs:
         run: chmod +x gradlew
       - name: Build with Gradle
         run: ./gradlew build
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build a Docker Image
+        run: docker build . --file ./javalin/javalin-start/Dockerfile --tag image
