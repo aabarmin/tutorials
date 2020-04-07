@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  IMAGE_NAME: javalin-start
+
 jobs:
   build:
 
@@ -57,3 +60,24 @@ jobs:
             --file ./javalin/javalin-start/Dockerfile \
             --tag image \
             ./javalin-artifact
+
+      - name: Login into the Docker Repository
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
+
+      - name: Push image
+        run: |
+          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
+
+          # Change all uppercase to lowercase
+          IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+
+          # Determine the version
+          VERSION=latest
+
+          # Small debug prints
+          echo IMAGE_ID=$IMAGE_ID
+          echo VERSION=$VERSION
+
+          # Push it
+          docker tag image $IMAGE_ID:$VERSION
+          docker push $IMAGE_ID:$VERSION
