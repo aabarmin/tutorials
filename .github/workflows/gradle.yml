@@ -35,7 +35,7 @@ jobs:
       - name: Save the Javalin-Start artifact
         uses: actions/upload-artifact@v1
         with:
-          name: javalin-start
+          name: javalin-artifact
           path: ./javalin/javalin-start/build/libs
 
   publish:
@@ -46,19 +46,13 @@ jobs:
       - name: Restore Javalin-Start artifact from storage
         uses: actions/download-artifact@v1
         with:
-          name: javalin-start
+          name: javalin-artifact
 
       - name: Some debugging
         shell: bash
         run: |
           ls -al
-          ls -al ./javalin-start/
-          ls -al ./javalin-start/build
-          ls -al ./javalin-start/build/libs
-          ls -al ./javalin
-          ls -al ./javalin/javalin-start
-          ls -al ./javalin/javalin-start/build
-          ls -al ./javalin/javalin-start/build/libs
+          ls -al ./javalin-artifact/
 
       - name: Build a Docker Image
         run: docker build . --file ./javalin/javalin-start/Dockerfile --tag image
