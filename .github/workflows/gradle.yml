@@ -43,9 +43,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout the code again
-        uses: actions/checkout@v2
-
       - name: Restore Javalin-Start artifact from storage
         uses: actions/download-artifact@v1
         with:
@@ -55,10 +52,13 @@ jobs:
         shell: bash
         run: |
           ls -al
+          ls -al ./javalin-start/
+          ls -al ./javalin-start/build
+          ls -al ./javalin-start/build/libs
           ls -al ./javalin
           ls -al ./javalin/javalin-start
           ls -al ./javalin/javalin-start/build
-          ls -al ./javalin/javalin-start/build/lib
+          ls -al ./javalin/javalin-start/build/libs
 
       - name: Build a Docker Image
         run: docker build . --file ./javalin/javalin-start/Dockerfile --tag image
