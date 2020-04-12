@@ -1,0 +1,21 @@
+{@java.util.Collection<ru.mydesignstudio.microprofile.service.Item> items}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Test Page
+        </title>
+    </head>
+    <body>
+        <h1>
+            Items
+        </h1>
+        <ul>
+            {#each items}
+            <li>
+                {it.title}
+            </li>
+            {/each}
+        </ul>
+    </body>
+</html>
