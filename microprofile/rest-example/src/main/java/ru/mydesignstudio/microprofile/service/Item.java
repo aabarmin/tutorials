@@ -1,5 +1,8 @@
 package ru.mydesignstudio.microprofile.service;
 
+import io.quarkus.qute.TemplateData;
+
+@TemplateData
 public class Item {
   private int id;
   private String title;

@@ -17,13 +17,13 @@ public class ItemResource {
   ItemService itemService;
 
   @Inject
-  @ResourcePath("items/list.html")
-  Template itemTemplate;
+  @ResourcePath("list.html")
+  Template listTemplate;
 
   @GET
   @Path("")
   @Produces(MediaType.TEXT_HTML)
   public TemplateInstance viewAll() {
-    return itemTemplate.data("items", itemService.findAll());
+    return listTemplate.data("items", itemService.findAll());
   }
 }
