@@ -1,4 +1,4 @@
-package ru.mydesignstudio.microprofile.jpa.service;
+package ru.mydesignstudio.microprofile.jpa.service.item;
 
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @QuarkusTest
 class ItemServiceTest {
-  @Inject ItemService itemService;
+  @Inject
+  ItemService itemService;
 
   @Test
   void check_contextStarts() {

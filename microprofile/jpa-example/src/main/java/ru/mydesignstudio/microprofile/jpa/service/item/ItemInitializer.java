@@ -1,4 +1,4 @@
-package ru.mydesignstudio.microprofile.jpa.service;
+package ru.mydesignstudio.microprofile.jpa.service.item;
 
 import io.quarkus.runtime.Startup;
 import io.quarkus.runtime.StartupEvent;

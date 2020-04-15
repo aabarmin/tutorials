@@ -1,4 +1,4 @@
-package ru.mydesignstudio.microprofile.jpa.service;
+package ru.mydesignstudio.microprofile.jpa.service.item;
 
 import ru.mydesignstudio.microprofile.jpa.entity.ItemEntity;
 
