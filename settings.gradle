@@ -35,3 +35,4 @@ include ':docker:apps:nexus-oss'
 
 include ':microprofile:rest-example'
 include ':microprofile:jpa-example'
+include ':microprofile:mongo-example'
