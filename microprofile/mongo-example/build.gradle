@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'io.quarkus'
+    id 'com.avast.gradle.docker-compose' version '0.10.10'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation enforcedPlatform("io.quarkus:quarkus-universe-bom:1.3.2.Final")
+    implementation 'io.quarkus:quarkus-resteasy'
+    implementation 'io.quarkus:quarkus-resteasy-jsonb'
+    implementation 'io.quarkus:quarkus-mongodb-client'
+
+    testImplementation 'io.quarkus:quarkus-junit5'
+    testImplementation 'io.rest-assured:rest-assured'
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-parameters'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dockerCompose {
+    useComposeFiles = ['docker-compose.yml']
+}
+
+tasks.test.dependsOn("composeUp")
+tasks.test.finalizedBy("composeDown")
+
+tasks.quarkusDev.dependsOn("composeUp")
+tasks.quarkusDev.finalizedBy("composeDown")
