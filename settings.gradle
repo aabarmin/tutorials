@@ -34,3 +34,4 @@ include ':gradle-examples:custom-configuration'
 include ':docker:apps:nexus-oss'
 
 include ':microprofile:rest-example'
+include ':microprofile:jpa-example'
