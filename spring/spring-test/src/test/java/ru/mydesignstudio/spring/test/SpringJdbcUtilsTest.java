@@ -8,9 +8,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.jdbc.JdbcTestUtils;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Transactional
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {
         InMemoryDataSourceConfiguration.class

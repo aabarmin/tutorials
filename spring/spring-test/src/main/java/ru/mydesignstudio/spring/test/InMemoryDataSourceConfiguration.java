@@ -18,7 +18,7 @@ public class InMemoryDataSourceConfiguration {
 
     @Bean
     public DataSource inMemoryDataSource() {
-        return new DriverManagerDataSource("jdbc:h2:~/inMemoryDb");
+        return new DriverManagerDataSource("jdbc:h2:mem:inMemoryDb");
     }
 
     @Bean
