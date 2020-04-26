@@ -9,7 +9,7 @@ on:
 jobs:
   build-clone-repos:
 
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Clone the repository
