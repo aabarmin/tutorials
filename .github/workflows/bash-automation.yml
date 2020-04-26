@@ -44,5 +44,5 @@ jobs:
       - name: Push image
         run: |
           IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/generate-git-report:latest
-          docker tag clone-repos "$IMAGE_ID"
+          docker tag generate-git-report "$IMAGE_ID"
           docker push "$IMAGE_ID"

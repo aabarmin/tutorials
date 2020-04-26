@@ -74,3 +74,41 @@ index 827b944..93af88c 100644
 +  @MockBean private DocumentValidator documentValidator;
 +  @MockBean private DocumentHandleHelper documentHandleHelper;
 ```
+
+## Building a Docker Image
+
+In order to use the script anywhere I suppose it's better using something like a Docker. In order
+to build a Docker Image with the `generate-git-report` script use the following script:
+
+```shell script
+$ ./build.sh
+
+Sending build context to Docker daemon  18.43kB
+Step 1/13 : FROM ubuntu:focal
+ ---> 1d622ef86b13
+Step 2/13 : COPY *.sh /opt/code/generate-git-report/
+
+...
+
+Step 13/13 : ENTRYPOINT ["/opt/entrypoint.sh"]
+ ---> Using cache
+ ---> b6d03129b465
+Successfully built b6d03129b465
+Successfully tagged generate-git-report:latest
+```
+
+## Running using a Docker
+
+In order to generate a report using a Docker the following shell script could be used:
+
+```shell script
+docker run \
+    -e REPORT_DAYS=1 \
+    -v /data/repos:/opt/data/repos \
+    -v /data/reports:/opt/data/reports \
+    generate-git-report:latest
+```
+
+The following environment variables might be used (all of them are optional):
+
+`REPORT_DAYS` - number of days to generate report for (1 day by default ans might not be set)
