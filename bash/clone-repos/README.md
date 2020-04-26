@@ -1,5 +1,6 @@
-GIT Clone/Update Tool
-=
+# GIT Clone/Update Tool
+
+## Params
 
 This is a simple tool that allows cloning or updating multiple repositories
 at once. The tools is written is bash and relies on the `git` command. 
@@ -26,3 +27,20 @@ repo.checkout.branch=
 the repository. Anonymous access is used if empty. 
 
 `repo.checkout.branch` what branch to checkout to. 
+
+## Usage
+
+The tool could be started simply by running the `./run.sh` script:
+
+```bash
+$ ./run.sh
+
+Input path to the properties file [props.properties]: 
+...
+```
+
+It's also possible passing the path to the property-file via the command-line:
+
+```bash
+$ ./run.sh props.properties
+```
