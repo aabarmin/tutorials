@@ -53,7 +53,7 @@ touch "$daily_report"
 files="$(ls "$report_folder")"
 for file in $files; do
   if [[ -f "$report_folder/$file" ]]; then
-    size="$(stat -f%z "$report_folder/$file")"
+    size="$(get_file_size "$report_folder/$file")"
     if [[ "$size" != "0" ]]; then
       cat "$report_folder/$file" >> "$daily_report"
     fi
