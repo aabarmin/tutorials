@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "./log.sh"
+source "../common/log.sh"
 source "./input.sh"
 source "./properties.sh"
 source "./clone.sh"
