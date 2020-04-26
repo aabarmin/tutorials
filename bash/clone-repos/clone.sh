@@ -48,6 +48,7 @@ do_clone_all() {
   do
     if [[ -n "$line" ]]; then
       clone "$property_file" "$line"
+      log ""
     fi
   done < "$repos_list"
 }
@@ -100,6 +101,23 @@ do_checkout() {
   local current_folder="$(pwd)"
 
   cd "$repo_folder"
+
+  ## Check if the current branch is target
+  local current_branch="$(git branch --show-current)"
+  if [[ "$current_branch" == "$repo_branch" ]]; then
+    ## Do nothing, on the target branch
+    log "Current branch is $repo_branch, no checkout"
+    return 0
+  fi
+
+  ## Check if the necessary branch exist
+  local remote_branches="$(git branch --all | grep origin/$repo_branch)"
+  if [[ -n "$remote_branches" ]]; then
+    ## There is no expected branch remotely
+    log "There is no branch origin/$repo_branch, no checkout"
+    return 0
+  fi
+
   git checkout --track "origin/$repo_branch"
   cd "$current_folder"
 }
@@ -132,7 +150,7 @@ get_repository_url() {
 
   if [[ "$check" != "1 2" ]]; then
     echo "$repo_url"
-    exit 0
+    return 0
   fi
 
   local pattern='(http|https)://(.+)'
