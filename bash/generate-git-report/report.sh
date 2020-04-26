@@ -23,3 +23,14 @@ generate_single_report() {
 
   cd "$current_folder"
 }
+
+get_file_size() {
+  local filepath=$1
+
+  local platform="$(uname)"
+  if [[ "$platform" == "Darwin" ]]; then
+    echo "$(stat -f%z "$filepath")"
+  else
+    echo "$(stat -c%s "$filepath")"
+  fi
+}

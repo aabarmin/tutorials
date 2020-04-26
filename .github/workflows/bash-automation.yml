@@ -8,9 +8,7 @@ on:
 
 jobs:
   build-clone-repos:
-
     runs-on: ubuntu-latest
-
     steps:
       - name: Clone the repository
         uses: actions/checkout@v2
@@ -26,5 +24,25 @@ jobs:
       - name: Push image
         run: |
           IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/clone-repos:latest
+          docker tag clone-repos "$IMAGE_ID"
+          docker push "$IMAGE_ID"
+
+  build-generate-git-report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone the repository
+        uses: actions/checkout@v2
+
+      - name: Build clone-repos image
+        run: |
+          cd ./bash/generate-git-report && \
+          ./build.sh
+
+      - name: Login into the Docker Repository
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
+
+      - name: Push image
+        run: |
+          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/generate-git-report:latest
           docker tag clone-repos "$IMAGE_ID"
           docker push "$IMAGE_ID"
