@@ -19,7 +19,7 @@ generate_single_report() {
     --pretty=format:"%Cblue%h%Creset - %Cred%an:%Creset %Cgreen%s%Creset" \
     -p \
     --no-merges \
-    > "$report_folder/$folder_name.txt"
+    > "$report_folder/$folder_name.diff"
 
   cd "$current_folder"
 }

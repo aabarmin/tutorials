@@ -41,7 +41,7 @@ log "Generating a daily report"
 
 ## Generate a general report
 ### Remove an old report file
-daily_report="$reports_base/$(date +%F).txt"
+daily_report="$reports_base/$(date +%F).diff"
 if [[ -f "$daily_report" ]]; then
   rm "$daily_report"
 fi
