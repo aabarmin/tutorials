@@ -20,6 +20,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 import ru.mydesignstudio.hibernate.configuration.HibernateConfiguration;
+import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {
@@ -31,6 +32,7 @@ public class ScriptTest {
     private SessionFactory sessionFactory;
 
     @Test
+    @EnabledIfEnvironmentVariable(named = "CI", matches = "true")
     public void createMultipleScripts() {
         final Session session = sessionFactory.getCurrentSession();
 

@@ -8,21 +8,21 @@ repositories {
 }
 
 dependencies {
-    compile group: 'javax', name: 'javaee-api', version: '8.0'
+    implementation group: 'javax', name: 'javaee-api', version: '8.0'
 
-    testCompile('org.junit.jupiter:junit-jupiter-api:5.3.1')
-    testCompile('org.junit.jupiter:junit-jupiter-params:5.3.1')
-    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.3.1')
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.3.1')
+    testImplementation('org.junit.jupiter:junit-jupiter-params:5.3.1')
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.3.1')
 
-    compile group: 'org.springframework', name: 'spring-context', version: '5.1.4.RELEASE'
-    compile group: 'org.springframework', name: 'spring-orm', version: '5.1.4.RELEASE'
-    compile group: 'org.springframework', name: 'spring-aspects', version: '5.1.4.RELEASE'
-    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.0.Final'
-    compile group: 'org.apache.tomcat', name: 'tomcat-dbcp', version: '9.0.14'
-    compile group: 'com.h2database', name: 'h2', version: '1.4.197'
-    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.8.1'
+    implementation group: 'org.springframework', name: 'spring-context', version: '5.1.4.RELEASE'
+    implementation group: 'org.springframework', name: 'spring-orm', version: '5.1.4.RELEASE'
+    implementation group: 'org.springframework', name: 'spring-aspects', version: '5.1.4.RELEASE'
+    implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.4.0.Final'
+    implementation group: 'org.apache.tomcat', name: 'tomcat-dbcp', version: '9.0.14'
+    implementation group: 'com.h2database', name: 'h2', version: '1.4.197'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.8.1'
 
-    testCompile group: 'org.springframework', name: 'spring-test', version: '5.1.4.RELEASE'
+    testImplementation group: 'org.springframework', name: 'spring-test', version: '5.1.4.RELEASE'
 
     compileOnly 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'

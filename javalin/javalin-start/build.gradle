@@ -14,19 +14,19 @@ jar {
                 "Main-Class": "ru.mydesignstudio.javalin.start.JavalinStartApplication"
         )
     }
-    from {
-        configurations.compile.collect {
-            it.isDirectory() ? it : zipTree(it)
-        }
-    }
+//    from {
+//        configurations.implementation.collect {
+//            it.isDirectory() ? it : zipTree(it)
+//        }
+//    }
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
 
-    compile 'io.javalin:javalin:3.5.0'
-    compile 'org.slf4j:slf4j-simple:1.7.26'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.10.0.pr1'
+    implementation 'io.javalin:javalin:3.5.0'
+    implementation 'org.slf4j:slf4j-simple:1.7.26'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.0.pr1'
 
     compileOnly 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
