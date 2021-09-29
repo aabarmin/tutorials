@@ -34,9 +34,10 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    finalizedBy "copyPacts"
 }
 
-task copyPacts(type: Copy, dependsOn: ':pact:consumer:test') {
+task copyPacts(type: Copy) {
     from("$rootDir/pact/consumer/build/pacts")
     into("$rootDir/pact/provider/src/test/resources/pacts")
 }
