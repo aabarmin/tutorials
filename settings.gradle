@@ -39,3 +39,6 @@ include ':microprofile:mongo-example'
 include ':microprofile:health-example'
 include ':microprofile:metrics-example'
 include ':microprofile:config-example'
+
+include ':pact:provider'
+include ':pact:consumer'

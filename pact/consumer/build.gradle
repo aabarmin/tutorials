@@ -1,0 +1,42 @@
+plugins {
+    id 'org.springframework.boot' version '2.5.5'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'dev.abarmin.pact.consumer'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.apache.commons:commons-lang3'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.assertj:assertj-core:3.21.0'
+    testImplementation 'com.github.tomakehurst:wiremock-jre8:2.31.0'
+
+    testImplementation 'au.com.dius.pact.consumer:junit5:4.2.13'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+task copyPacts(type: Copy, dependsOn: ':pact:consumer:test') {
+    from("$rootDir/pact/consumer/build/pacts")
+    into("$rootDir/pact/provider/src/test/resources/pacts")
+}
