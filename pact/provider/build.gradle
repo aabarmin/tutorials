@@ -32,3 +32,9 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+clean {
+    doFirst {
+        delete "$rootDir/pact/provider/src/test/resources/pacts"
+    }
+}
