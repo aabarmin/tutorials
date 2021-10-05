@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 import ru.mydesignstudio.hibernate.configuration.HibernateConfiguration;
+import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {
@@ -31,6 +33,7 @@ public class ScriptTest {
     private SessionFactory sessionFactory;
 
     @Test
+    @Disabled
     public void createMultipleScripts() {
         final Session session = sessionFactory.getCurrentSession();
 
