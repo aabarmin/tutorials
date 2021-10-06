@@ -2,8 +2,11 @@ version: '3'
 
 services:
   db:
-    image: postgres
+    image: mysql:8
     ports:
-      - "5432:5432"
+      - "3306:3306"
     environment:
-      - POSTGRES_PASSWORD=password
+      - MYSQL_DATABASE=quotes
+      - MYSQL_USER=mysql
+      - MYSQL_PASSWORD=password
+      - MYSQL_RANDOM_ROOT_PASSWORD=true
