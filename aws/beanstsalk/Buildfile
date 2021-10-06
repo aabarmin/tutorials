@@ -1,1 +1,1 @@
-build: gradle --settings-file=beanstalk-settings.gradle assemble
+build: ./gradlew --settings-file=beanstalk-settings.gradle assemble
