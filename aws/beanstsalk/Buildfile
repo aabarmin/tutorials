@@ -1,0 +1,1 @@
+build: gradle --settings-file=beanstalk-settings.gradle assemble
