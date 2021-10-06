@@ -1,0 +1,37 @@
+task clean() {
+    doFirst {
+        delete "$rootDir/dist"
+    }
+}
+
+task createDist() {
+    doLast {
+        mkdir "$rootDir/dist"
+    }
+}
+
+task copyDist(type: Copy) {
+    from ("$rootDir/api-gateway/build/libs") {
+        exclude "*-plain.jar"
+        rename {
+            return "api-gateway.jar"
+        }
+    }
+    from ("$rootDir/data-provider/build/libs") {
+        exclude "*-plain.jar"
+        rename {
+            return "data-provider.jar"
+        }
+    }
+
+    into "$rootDir/dist"
+}
+
+task assemble() {
+    dependsOn "clean"
+    dependsOn "createDist"
+    dependsOn "api-gateway:build"
+    dependsOn "data-provider:build"
+
+    finalizedBy "copyDist"
+}

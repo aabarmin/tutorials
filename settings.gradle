@@ -44,4 +44,4 @@ include ':pact:provider'
 include ':pact:consumer'
 
 include ':aws:beanstsalk:api-gateway'
-include ':aws:beanstsalk:data-provier'
+include ':aws:beanstsalk:data-provider'
