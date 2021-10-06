@@ -8,11 +8,11 @@ There are two apps:
 
 Also, the following environment variables are in place: 
 
-* `DB_HOST`
-* `DB_PORT`
-* `DB_NAME`
-* `DB_USERNAME`
-* `DB_PASSWORD`
+* `RDS_HOSTNAME`
+* `RDS_PORT`
+* `RDS_DB_NAME`
+* `RDS_USERNAME`
+* `RDS_PASSWORD`
 
 Execute the following command to build both apps at once: 
 
