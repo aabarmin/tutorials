@@ -1,0 +1,6 @@
+server:
+  port: ${PORT:5000}
+
+quotes:
+  provider:
+    url: http://localhost:8080/quote

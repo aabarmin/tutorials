@@ -1,0 +1,4 @@
+rootProject.name = 'beanstalk'
+
+include ':api-gateway'
+include ':data-provider'

@@ -42,3 +42,6 @@ include ':microprofile:config-example'
 
 include ':pact:provider'
 include ':pact:consumer'
+
+include ':aws:beanstsalk:api-gateway'
+include ':aws:beanstsalk:data-provider'

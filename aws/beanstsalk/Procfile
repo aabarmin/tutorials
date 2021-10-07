@@ -1,0 +1,2 @@
+web: java -jar ./dist/api-gateway.jar
+provider: java -jar ./dist/data-provider.jar
