@@ -17,7 +17,7 @@ Also, the following environment variables are in place:
 Execute the following command to build both apps at once: 
 
 ```shell
-$ gradle --settings-file=beanstalk-settings.gradle assemble
+$ ./gradlew --settings-file=beanstalk-settings.gradle assemble
 ```
 
 As a result, two jar's will be added to the `dist` folder:
@@ -28,3 +28,11 @@ dist
 ├── api-gateway.jar
 └── data-provider.jar
 ```
+
+To prepare a zip archive to be uploaded to AWS Beanstalk, execute the following command: 
+
+```shell
+$ ./gradlew --settings-file=beanstalk-settings.gradle archive
+```
+
+File `archive.zip` will be created in the root directory. 

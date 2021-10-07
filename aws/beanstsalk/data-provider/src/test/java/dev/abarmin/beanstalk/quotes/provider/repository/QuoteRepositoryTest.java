@@ -5,7 +5,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
+import java.util.Random;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.*;
@@ -33,8 +36,14 @@ class QuoteRepositoryTest {
                 })
                 .forEach(entityManager::persist);
 
-        IntStream.range(0, 100)
-                .mapToObj(index -> uut.getRandomQuotes().get(0))
-                .forEach(value -> assertThat(value).isNotNull());
+        final long count = uut.count();
+        final Page<Quote> page = uut.findAll(PageRequest.of(randomNumber(count), 1));
+
+        assertThat(page).isNotNull();
+        assertThat(page.getNumberOfElements()).isEqualTo(1);
+    }
+
+    private int randomNumber(long max) {
+        return new Random().nextInt((int) max);
     }
 }

@@ -5,11 +5,14 @@ import dev.abarmin.beanstalk.quotes.provider.repository.QuoteRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @SpringJUnitConfig(QuoteProvider.class)
@@ -29,7 +32,8 @@ public class QuoteProviderTest {
     void provide_shouldReturnNextQuote() {
         final Quote quote = new Quote();
         quote.setText("My quote");
-        when(repository.getRandomQuotes()).thenReturn(List.of(quote));
+        when(repository.count()).thenReturn(10L);
+        when(repository.findAll(any(Pageable.class))).thenReturn(new PageImpl<Quote>(List.of(quote)));
 
         final Quote extracted = uut.provide();
 
