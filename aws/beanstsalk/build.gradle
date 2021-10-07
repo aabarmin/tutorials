@@ -1,16 +1,20 @@
 plugins {
     id 'wrapper'
+    id 'base'
 }
 
-task clean() {
+clean {
     doFirst {
-        delete "$rootDir/dist"
+        delete layout.projectDirectory.dir("dist")
+        delete fileTree(layout.projectDirectory).matching {
+            include "**/*.zip"
+        }
     }
 }
 
 task createDist() {
     doLast {
-        mkdir "$rootDir/dist"
+        mkdir layout.projectDirectory.dir("dist")
     }
 }
 
@@ -31,11 +35,22 @@ task copyDist(type: Copy) {
     into "$rootDir/dist"
 }
 
-task assemble() {
+assemble {
     dependsOn "clean"
     dependsOn "createDist"
     dependsOn "api-gateway:build"
     dependsOn "data-provider:build"
 
     finalizedBy "copyDist"
+}
+
+task archive(type: Zip) {
+    dependsOn "clean"
+
+    from (layout.projectDirectory) {
+        exclude "**/*.zip"
+    }
+
+    destinationDirectory = layout.projectDirectory
+    archiveFileName = "archive.zip"
 }
