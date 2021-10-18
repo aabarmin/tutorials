@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package types;
+
+option java_package = "dev.abarmin.grpc.protos";
+option java_multiple_files = true;
+option java_generic_services = true;
+
+message SearchRequest {
+  string request = 1;
+}
+
+message SearchResponse {
+  repeated SearchResponseItem items = 1;
+}
+
+message SearchResponseItem {
+  string title = 1;
+}
+
+service SearchService {
+  rpc Search(SearchRequest) returns (SearchResponse);
+}

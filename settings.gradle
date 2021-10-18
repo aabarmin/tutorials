@@ -45,3 +45,6 @@ include ':pact:consumer'
 
 include ':aws:beanstsalk:api-gateway'
 include ':aws:beanstsalk:data-provider'
+
+include ':protobuf:client'
+include ':protobuf:server'
