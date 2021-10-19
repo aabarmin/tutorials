@@ -45,3 +45,4 @@ include ':pact:consumer'
 
 include ':aws:beanstsalk:api-gateway'
 include ':aws:beanstsalk:data-provider'
+include ':aws:documentdb'

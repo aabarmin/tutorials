@@ -1,0 +1,6 @@
+spring:
+  data:
+    mongodb:
+      host: small-document-db.cluster-cidaau6sbnj4.us-east-1.docdb.amazonaws.com
+      username: abarmin
+      password:
