@@ -17,3 +17,6 @@ gradle-app.setting
 # Idea ignores
 .idea
 *.iml
+
+# Misc files
+.project
