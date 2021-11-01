@@ -20,3 +20,9 @@ gradle-app.setting
 
 # Misc files
 .project
+
+# Java compiled classes and other files with misc settings
+*.class
+.settings/
+bin/
+.classpath
